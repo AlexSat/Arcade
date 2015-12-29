@@ -55,10 +55,14 @@ class Button(object):
         if self.rect.collidepoint(event.pos):
             self.clicked = True
             if not self.call_on_release:
+                if self.click_sound:
+                    self.click_sound.play()
                 self.function()
 
     def on_release(self,event):
         if self.clicked and self.call_on_release:
+            if self.click_sound:
+                    self.click_sound.play()
             self.function()
         self.clicked = False
 
